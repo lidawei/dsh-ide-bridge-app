@@ -1,8 +1,18 @@
 lockfileVersion: '9.0'
 
 settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
+  autoInstallPeers: false
+  excludeLinksFromLockfile: true
+
+overrides:
+  '@deepseek-ai/cordis': link:./harness/vendor/cordis
+  '@deepseek-ai/dsh-api-remotes': link:./harness/packages/api/remotes
+  '@deepseek-ai/dsh-client-locale': link:./harness/packages/client/locale
+  '@deepseek-ai/dsh-client-ui-conversation': link:./harness/packages/client/ui-conversation
+  '@deepseek-ai/dsh-client-ui-renderer': link:./harness/packages/client/ui-renderer
+  '@deepseek-ai/dsh-client-ui-slots': link:./harness/packages/client/ui-slots
+  '@deepseek-ai/dsh-home-paths': link:./harness/packages/util/home-paths
+  '@deepseek-ai/dsh-typert-protocol': link:./harness/packages/typert/protocol
 
 importers:
 
@@ -26,40 +36,49 @@ importers:
 
   packages/client-ui-ide-bridge:
     dependencies:
+      '@deepseek-ai/cordis':
+        specifier: link:../../harness/vendor/cordis
+        version: link:../../harness/vendor/cordis
+      '@deepseek-ai/dsh-api-remotes':
+        specifier: link:../../harness/packages/api/remotes
+        version: link:../../harness/packages/api/remotes
+      '@deepseek-ai/dsh-client-locale':
+        specifier: link:../../harness/packages/client/locale
+        version: link:../../harness/packages/client/locale
+      '@deepseek-ai/dsh-client-ui-conversation':
+        specifier: link:../../harness/packages/client/ui-conversation
+        version: link:../../harness/packages/client/ui-conversation
+      '@deepseek-ai/dsh-client-ui-renderer':
+        specifier: link:../../harness/packages/client/ui-renderer
+        version: link:../../harness/packages/client/ui-renderer
+      '@deepseek-ai/dsh-client-ui-slots':
+        specifier: link:../../harness/packages/client/ui-slots
+        version: link:../../harness/packages/client/ui-slots
       '@deepseek-ai/dsh-ide-bridge':
         specifier: workspace:^
         version: link:../ide-bridge
+      '@deepseek-ai/dsh-typert-protocol':
+        specifier: link:../../harness/packages/typert/protocol
+        version: link:../../harness/packages/typert/protocol
       react:
         specifier: ^18.2.0
         version: 18.3.1
     devDependencies:
-      '@deepseek-ai/cordis':
-        specifier: link:../../../../0815deepseek-harness/vendor/cordis
-        version: link:../../../../0815deepseek-harness/vendor/cordis
-      '@deepseek-ai/dsh-api-remotes':
-        specifier: link:../../../../0815deepseek-harness/packages/api/remotes
-        version: link:../../../../0815deepseek-harness/packages/api/remotes
-      '@deepseek-ai/dsh-client-locale':
-        specifier: link:../../../../0815deepseek-harness/packages/client/locale
-        version: link:../../../../0815deepseek-harness/packages/client/locale
-      '@deepseek-ai/dsh-client-ui-conversation':
-        specifier: link:../../../../0815deepseek-harness/packages/client/ui-conversation
-        version: link:../../../../0815deepseek-harness/packages/client/ui-conversation
-      '@deepseek-ai/dsh-client-ui-renderer':
-        specifier: link:../../../../0815deepseek-harness/packages/client/ui-renderer
-        version: link:../../../../0815deepseek-harness/packages/client/ui-renderer
-      '@deepseek-ai/dsh-client-ui-slots':
-        specifier: link:../../../../0815deepseek-harness/packages/client/ui-slots
-        version: link:../../../../0815deepseek-harness/packages/client/ui-slots
-      '@deepseek-ai/dsh-typert-protocol':
-        specifier: link:../../../../0815deepseek-harness/packages/typert/protocol
-        version: link:../../../../0815deepseek-harness/packages/typert/protocol
       '@types/react':
         specifier: ~18.3.1
         version: 18.3.31
 
   packages/ide-bridge:
     dependencies:
+      '@deepseek-ai/cordis':
+        specifier: link:../../harness/vendor/cordis
+        version: link:../../harness/vendor/cordis
+      '@deepseek-ai/dsh-home-paths':
+        specifier: link:../../harness/packages/util/home-paths
+        version: link:../../harness/packages/util/home-paths
+      '@deepseek-ai/dsh-typert-protocol':
+        specifier: link:../../harness/packages/typert/protocol
+        version: link:../../harness/packages/typert/protocol
       ws:
         specifier: ^8.18.0
         version: 8.21.3
@@ -67,31 +86,21 @@ importers:
         specifier: ^4.4.3
         version: 4.5.4
     devDependencies:
-      '@deepseek-ai/cordis':
-        specifier: link:../../../../0815deepseek-harness/vendor/cordis
-        version: link:../../../../0815deepseek-harness/vendor/cordis
-      '@deepseek-ai/dsh-home-paths':
-        specifier: link:../../../../0815deepseek-harness/packages/util/home-paths
-        version: link:../../../../0815deepseek-harness/packages/util/home-paths
-      '@deepseek-ai/dsh-typert-protocol':
-        specifier: link:../../../../0815deepseek-harness/packages/typert/protocol
-        version: link:../../../../0815deepseek-harness/packages/typert/protocol
       '@types/ws':
         specifier: ^8.5.13
         version: 8.18.1
 
   packages/ide-bridge-app:
     dependencies:
+      '@deepseek-ai/cordis':
+        specifier: link:../../harness/vendor/cordis
+        version: link:../../harness/vendor/cordis
       '@deepseek-ai/dsh-client-ui-ide-bridge':
         specifier: workspace:^
         version: link:../client-ui-ide-bridge
       '@deepseek-ai/dsh-ide-bridge':
         specifier: workspace:^
         version: link:../ide-bridge
-    devDependencies:
-      '@deepseek-ai/cordis':
-        specifier: link:../../../../0815deepseek-harness/vendor/cordis
-        version: link:../../../../0815deepseek-harness/vendor/cordis
 
 packages:
 

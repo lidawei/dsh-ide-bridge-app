@@ -4,6 +4,7 @@
   "description": "DSH IDE bridge monorepo: VS Code WS → web UI",
   "type": "module",
   "scripts": {
+    "preinstall": "node scripts/ensure-harness-link.mjs",
     "build": "node scripts/build.mjs",
     "build:host": "node scripts/build-host.mjs",
     "build:client": "node scripts/build-client.mjs"

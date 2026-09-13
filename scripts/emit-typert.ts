@@ -1,11 +1,15 @@
 /** Stage the external Host package into harness, emit Typert artifacts, copy them back. */
 
 import { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { createRequire } from 'node:module'
 import { dirname, join, resolve } from 'node:path'
 import { pathToFileURL, fileURLToPath } from 'node:url'
 
+const { ensureHarnessLink, resolveHarnessRoot } = createRequire(import.meta.url)('./harness-root.cjs')
+
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const harnessRoot = process.env.DSH_HARNESS_ROOT ?? resolve(repoRoot, '../../0815deepseek-harness')
+ensureHarnessLink()
+const harnessRoot = resolveHarnessRoot()
 const externalPackageDir = resolve(repoRoot, 'packages/ide-bridge')
 const stagingPath = resolve(harnessRoot, 'packages/experimental/ide-bridge-staging')
 const hostTsconfigPath = resolve(harnessRoot, 'tsconfig.host.json')

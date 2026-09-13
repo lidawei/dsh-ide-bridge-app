@@ -1,2 +1,20 @@
 packages:
   - packages/*
+
+# Peers come from ./harness links (and from dsh at runtime), not from npm.
+autoInstallPeers: false
+# Lock records overrides below; do not expand each importer's link: path.
+excludeLinksFromLockfile: true
+
+# Compile-time links go through ./harness (created by scripts/ensure-harness-link.mjs).
+# Change the checkout path in scripts/harness-root.cjs or DSH_HARNESS_ROOT — not here.
+# Paths are relative to this workspace root.
+overrides:
+  '@deepseek-ai/cordis': link:./harness/vendor/cordis
+  '@deepseek-ai/dsh-api-remotes': link:./harness/packages/api/remotes
+  '@deepseek-ai/dsh-client-locale': link:./harness/packages/client/locale
+  '@deepseek-ai/dsh-client-ui-conversation': link:./harness/packages/client/ui-conversation
+  '@deepseek-ai/dsh-client-ui-renderer': link:./harness/packages/client/ui-renderer
+  '@deepseek-ai/dsh-client-ui-slots': link:./harness/packages/client/ui-slots
+  '@deepseek-ai/dsh-home-paths': link:./harness/packages/util/home-paths
+  '@deepseek-ai/dsh-typert-protocol': link:./harness/packages/typert/protocol

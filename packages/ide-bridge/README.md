@@ -38,7 +38,7 @@ $DSH_HOME/ide/{port}.lock
 
 `peerDependencies`：`@deepseek-ai/cordis`、`dsh-home-paths`、`dsh-typert-protocol`（由已安装的 `dsh` profile 提供）。
 
-`devDependencies` 里的 `link:.../0815deepseek-harness/...` 仅用于**本机编译**，不是 profile 安装时的运行时来源。
+`devDependencies` 仅用于**本机编译**（经 `pnpm-workspace.yaml` overrides → `./harness`），不是 profile 安装时的运行时来源。
 
 ## 相关文档
 
