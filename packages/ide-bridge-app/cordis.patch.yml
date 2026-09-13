@@ -1,0 +1,9 @@
+# DSH IDE bridge layer for the web profile.
+
+- insert:
+    - id: ide-bridge
+      name: '@deepseek-ai/dsh-ide-bridge'
+      config:
+        wsHost: !!js process.env.DSH_IDE_WS_HOST || '127.0.0.1'
+    - id: ui-ide-bridge
+      name: '@deepseek-ai/dsh-client-ui-ide-bridge'

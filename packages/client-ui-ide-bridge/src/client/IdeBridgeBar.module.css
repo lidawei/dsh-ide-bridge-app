@@ -1,0 +1,39 @@
+/* IDE context row: same centered axis as StatsLine on conversation.composer.dock. */
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  max-width: var(--dsh-chat-content-width);
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 6px calc(var(--dsh-composer-side-clearance) + 16px) 0;
+  font-size: var(--dsh-content-font-size-secondary, 13px);
+  line-height: calc(20px + var(--dsh-content-font-delta-secondary, 0px));
+  color: var(--dsw-alias-label-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.rootDisconnected {
+  opacity: 0.72;
+}
+
+.icon {
+  flex: 0 0 auto;
+  display: block;
+  color: var(--dsw-alias-label-tertiary);
+}
+
+.line {
+  /* Shrink-only so icon+text stay a centered group, matching StatsLine. */
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--dsw-alias-label-primary);
+  font-variant-numeric: tabular-nums;
+}
