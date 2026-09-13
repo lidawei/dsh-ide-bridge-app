@@ -2,9 +2,7 @@
 
 独立 DSH 插件 monorepo：对接 **dsh-ide-vscode** WebSocket，在 **dsh web** composer 下方显示 VS Code 当前文件与行号。
 
-本仓库与 [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) **分离**，可单独上库；运行时依赖已安装的 `dsh`，编译时只认仓库根目录的 `./harness` 软链接（指向你 clone 的 harness 源码，不进 git）。
-
-Harness 方案背景见 [docs/arch/vscode-profile-design.md](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/arch/vscode-profile-design.md)（Web 侧桥接实现以本仓为准）。
+本仓库与 deepseek-harness **分离**，可单独上库；运行时依赖已安装的 `dsh`，编译时只认仓库根目录的 `./harness` 软链接（指向你 clone 的 harness 源码，不进 git）。Web 侧桥接实现以本仓为准。
 
 ## 仓库目录
 
