@@ -7,6 +7,7 @@ export interface IdeBridgeEditorView {
   line: number | null
   column: number | null
   selectionEndLine: number | null
+  selectionEndColumn: number | null
   selectedText: string | null
 }
 

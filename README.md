@@ -95,7 +95,7 @@ dsh plugin --profile web add .\packages\ide-bridge-app
 
 1. 编译并安装 **dsh-ide-vscode**，Reload Window（写 lock，`ideId: vscode`）
 2. `pnpm run build` 后重启 `dsh --profile web`，浏览器强刷
-3. Composer 下方一行示例：`VSCode - packages/foo.ts 10:12`（悬停见完整路径）
+3. Composer 下方一行示例：`VSCode - packages/foo.ts 10:5`（选区为 `10:5-12:8`；悬停见完整路径）
 
 ## 开发说明
 
@@ -105,7 +105,7 @@ dsh plugin --profile web add .\packages\ide-bridge-app
 
 ## Remote API
 
-`ideBridge/getContext` 含 `ideId` / `ideName`（来自 lock 与 WS `hello`）、`editor`（1-based 行号，`selectionEndLine` 为选区结束行）。
+`ideBridge/getContext` 含 `ideId` / `ideName`（来自 lock 与 WS `hello`）、`editor`（1-based 行号/列号，`selectionEndLine` / `selectionEndColumn` 为选区结束位置）。
 
 ```json
 {
@@ -115,7 +115,9 @@ dsh plugin --profile web add .\packages\ide-bridge-app
   "editor": {
     "relativePath": "src/index.ts",
     "line": 10,
-    "selectionEndLine": 12
+    "column": 5,
+    "selectionEndLine": 12,
+    "selectionEndColumn": 8
   }
 }
 ```
