@@ -7,7 +7,7 @@ import type { Context } from '@deepseek-ai/cordis'
 import { TypertRemoteService, Remote } from '@deepseek-ai/dsh-typert-protocol'
 import type {} from 'zod'
 
-import { findNewestLock, resolveIdeLockDir } from './lock-scanner.ts'
+import { findNewestLock, formatUserHomePath, resolveIdeLockDir } from './lock-scanner.ts'
 import type { IdeBridgeConfig, IdeBridgeContext } from './types.ts'
 import { IdeWsClient } from './ws-client.ts'
 
@@ -70,7 +70,7 @@ export class IdeBridgeService extends TypertRemoteService {
     const lockDir = resolveIdeLockDir(this.config.lockDir || undefined)
     const found = findNewestLock(lockDir)
     if (!found) {
-      this.state = { ...emptyContext(), error: `No IDE lock file in ${lockDir}` }
+      this.state = { ...emptyContext(), error: `No IDE lock file in ${formatUserHomePath(lockDir)}` }
       this.scheduleReconnect()
       return
     }

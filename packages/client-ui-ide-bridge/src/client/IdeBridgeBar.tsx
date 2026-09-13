@@ -33,7 +33,7 @@ export function IdeBridgeBar({ getContext, t }: IdeBridgeBarProps) {
 
   return (
     <div
-      className={connected ? css.root : `${css.root} ${css.rootDisconnected}`}
+      className={css.root}
       title={tooltip}
       aria-label={line}
     >

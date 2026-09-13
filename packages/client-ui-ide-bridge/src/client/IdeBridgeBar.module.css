@@ -12,20 +12,16 @@
   padding: 6px calc(var(--dsh-composer-side-clearance) + 16px) 0;
   font-size: var(--dsh-content-font-size-secondary, 13px);
   line-height: calc(20px + var(--dsh-content-font-delta-secondary, 0px));
-  color: var(--dsw-alias-label-secondary);
+  color: rgb(129, 133, 140);
   white-space: nowrap;
   overflow: hidden;
   min-width: 0;
 }
 
-.rootDisconnected {
-  opacity: 0.72;
-}
-
 .icon {
   flex: 0 0 auto;
   display: block;
-  color: var(--dsw-alias-label-tertiary);
+  color: inherit;
 }
 
 .line {
@@ -34,6 +30,6 @@
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: var(--dsw-alias-label-primary);
+  color: inherit;
   font-variant-numeric: tabular-nums;
 }

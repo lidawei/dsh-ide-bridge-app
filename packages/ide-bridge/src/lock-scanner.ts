@@ -1,4 +1,5 @@
 import * as fs from 'node:fs'
+import * as os from 'node:os'
 import * as path from 'node:path'
 
 import { resolveDshHome } from '@deepseek-ai/dsh-home-paths'
@@ -21,6 +22,19 @@ export function resolveIdeLockDir(configured?: string): string {
     return path.resolve(override)
   }
   return path.join(resolveDshHome(), 'ide')
+}
+
+/** Display `C:\Users\me\.dsh\ide` as `~/.dsh/ide` (no username in the UI). */
+export function formatUserHomePath(absPath: string): string {
+  const resolved = path.resolve(absPath)
+  const home = path.resolve(os.homedir())
+  const resolvedCmp = process.platform === 'win32' ? resolved.toLowerCase() : resolved
+  const homeCmp = process.platform === 'win32' ? home.toLowerCase() : home
+  if (resolvedCmp === homeCmp) return '~'
+  const prefix = homeCmp + path.sep
+  if (!resolvedCmp.startsWith(prefix)) return resolved
+  const rel = resolved.slice(home.length + path.sep.length)
+  return `~/${rel.split(path.sep).join('/')}`
 }
 
 function isPidAlive(pid: number): boolean {
