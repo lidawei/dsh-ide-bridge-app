@@ -12,6 +12,7 @@ overrides:
   '@deepseek-ai/dsh-client-ui-renderer': link:./harness/packages/client/ui-renderer
   '@deepseek-ai/dsh-client-ui-slots': link:./harness/packages/client/ui-slots
   '@deepseek-ai/dsh-home-paths': link:./harness/packages/util/home-paths
+  '@deepseek-ai/dsh-system-prompt': link:./harness/packages/core/system-prompt
   '@deepseek-ai/dsh-typert-protocol': link:./harness/packages/typert/protocol
 
 importers:

@@ -5,9 +5,11 @@
 
 import type { Context } from '@deepseek-ai/cordis'
 import { TypertRemoteService, Remote } from '@deepseek-ai/dsh-typert-protocol'
+import type {} from '@deepseek-ai/dsh-system-prompt'
 import type {} from 'zod'
 
 import { findNewestLock, formatUserHomePath, resolveIdeLockDir } from './lock-scanner.ts'
+import { formatIdePromptContext } from './prompt-context.ts'
 import type { IdeBridgeConfig, IdeBridgeContext } from './types.ts'
 import { IdeWsClient } from './ws-client.ts'
 
@@ -43,6 +45,14 @@ export class IdeBridgeService extends TypertRemoteService {
   constructor(ctx: Context, pluginConfig: IdeBridgeConfig = {}) {
     super(ctx, 'ideBridge')
     this.config = resolveConfig(pluginConfig)
+
+    ctx.inject(['systemPrompt'], (scope) => {
+      scope.systemPrompt.context({
+        name: 'ide:editor',
+        order: 125,
+        text: () => formatIdePromptContext(this.state),
+      })
+    })
 
     ctx.effect(() => {
       this.connectLoop()

@@ -8,6 +8,7 @@
 - 用 lock 里的 `port` / `authToken` 连接 **dsh-ide-vscode** 的 loopback WebSocket
 - 消费 `hello`（`ideId` / `ideName`）与 `snapshot` / `event`（editor 源）
 - 通过 Typert Remote 暴露 `ideBridge/getContext`
+- 注册 runtime context `ide:editor`：发消息时把当前文件、1-based 行列和选区文本注入模型上下文（未连接或无文件则为空）
 
 ## 为何单独成包
 
@@ -20,6 +21,7 @@ $DSH_HOME/ide/{port}.lock
     → IdeWsClient (auth + snapshot)
     → IdeBridgeContext
     → Remote getContext
+    → systemPrompt.context ide:editor
 ```
 
 ## 编译
@@ -36,7 +38,7 @@ $DSH_HOME/ide/{port}.lock
 
 ## 运行时依赖
 
-`peerDependencies`：`@deepseek-ai/cordis`、`dsh-home-paths`、`dsh-typert-protocol`（由已安装的 `dsh` profile 提供）。
+`peerDependencies`：`@deepseek-ai/cordis`、`dsh-home-paths`、`dsh-system-prompt`、`dsh-typert-protocol`（由已安装的 `dsh` profile 提供）。
 
 `devDependencies` 仅用于**本机编译**（经 `pnpm-workspace.yaml` overrides → `./harness`），不是 profile 安装时的运行时来源。
 

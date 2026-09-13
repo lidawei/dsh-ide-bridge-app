@@ -8,6 +8,7 @@
   "references": [
     { "path": "../../../vendor/cordis" },
     { "path": "../../util/home-paths" },
+    { "path": "../../core/system-prompt" },
     { "path": "../../typert/protocol" }
   ]
 }

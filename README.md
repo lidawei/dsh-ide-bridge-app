@@ -105,7 +105,7 @@ dsh plugin --profile web add .\packages\ide-bridge-app
 
 ## Remote API
 
-`ideBridge/getContext` 含 `ideId` / `ideName`（来自 lock 与 WS `hello`）、`editor`（1-based 行号/列号，`selectionEndLine` / `selectionEndColumn` 为选区结束位置）。
+`ideBridge/getContext` 含 `ideId` / `ideName`（来自 lock 与 WS `hello`）、`editor`（1-based 行号/列号，`selectionEndLine` / `selectionEndColumn` 为选区结束位置）。Host 同时注册 `systemPrompt.context` `ide:editor`，发消息时把当前文件、行列和选区文本写入模型上下文。
 
 ```json
 {
